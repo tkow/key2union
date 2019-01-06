@@ -44,6 +44,32 @@ function makeFactorialFunction() {
   );
 }
 
+const a = ['test','test.hoge']
+
+function generateUnions() {
+    // function toPaths(dic: ObjectDictionary) : string[] {
+    //     let result: string[] = []
+    //     function extractPath(parent: string, object: ObjectDictionary) {
+    //         for (const key of  Object.keys(object)) {
+    //             let value = object[key];
+    //             if(typeof value === "string") {
+    //                 result.push(parent + key);
+    //             }else{
+    //                 extractPath(key + ".", value);
+    //             }
+    //         }
+    //     }
+    //     extractPath("", dic);
+    //     return result;
+    // }
+  let paths = a
+      .map(ts.createStringLiteral)
+      .map(ts.createLiteralTypeNode);
+  let unionType = ts.createUnionTypeNode(paths);
+  return ts.createTypeAliasDeclaration(undefined, undefined, "TKeys", undefined, unionType);
+
+}
+
 const resultFile = ts.createSourceFile(
   "someFileName.ts",
   "",
@@ -56,7 +82,7 @@ const printer = ts.createPrinter({
 });
 const result = printer.printNode(
   ts.EmitHint.Unspecified,
-  makeFactorialFunction(),
+  generateUnions(),
   resultFile
 );
 
