@@ -22,6 +22,6 @@
     "strict": true
   },
   "filesGlob": ["./**/*.ts"],
-  "exclude": ["expamles","lib/__tests__","build", "node_modules", "example"],
+  "exclude": ["examples","lib/__tests__","build", "node_modules", "example"],
   "compileOnSave": false
 }

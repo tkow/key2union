@@ -10,7 +10,7 @@ const createParmaeters = (params:ArgumentType[]) => params.map((param) => ts.cre
   param.parameterType
 ));
 
-type ArgumentType = {
+interface ArgumentType {
   identifier: string
   variableArgs?: boolean
   parameterType: ts.TypeNode
@@ -68,8 +68,8 @@ export function makeTFuncDifinition (flattenKeys:string[],config:Config) {
       },
       {
         identifier:'args?',
-        variableArgs:true,
-        parameterType: ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
+        parameterType: ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword),
+        variableArgs:true
       },
     ]),
     resultFile
