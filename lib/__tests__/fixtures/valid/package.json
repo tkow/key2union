@@ -1,0 +1,6 @@
+{
+  "i18n-dts": {
+    "model": "./en.json",
+    "outputDir": "./typings"
+  }
+}
