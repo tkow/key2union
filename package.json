@@ -1,5 +1,5 @@
 {
-  "name": "tscompiler-sample",
+  "name": "key2union",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -7,15 +7,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tkow/tscompiler-sample.git"
+    "url": "git+https://github.com/tkow/key2union.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tkow/tscompiler-sample/issues"
+    "url": "https://github.com/tkow/key2union/issues"
   },
-  "homepage": "https://github.com/tkow/tscompiler-sample#readme",
+  "homepage": "https://github.com/tkow/key2union#readme",
   "description": "",
   "devDependencies": {
     "@types/commander": "^2.12.2",
