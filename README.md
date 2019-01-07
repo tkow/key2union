@@ -17,11 +17,11 @@ $ npm start
 
 Write your package.json.
 
-```json
+```
 {
   "scripts":{
     "k2u": "ts-node ${path}/key2union/bin/index.ts"
-  },...
+  },...,
   "key2union": {
     "model": "./model/index.ts",
     "outputDir": "./typings/",
@@ -53,7 +53,7 @@ Specify unionTypeKey and the functions typeName.
 ex)
 ```
 "key2union": {
-  .../
+  //...,
   "unionType": "TKeys",
 }
 ```
