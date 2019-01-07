@@ -2,13 +2,13 @@ import { INTERPOLATION_PATTERN } from '../constants';
 import { JsonObject, Translation } from '../interfaces';
 
 export const extractInterpolations = (str: string): string[] => {
-  const interpolations = [];
+  const interpolations:string[] = [];
   while (true) {
     const matches = str.match(INTERPOLATION_PATTERN);
     if (!matches) {
       break;
     }
-    interpolations.push(matches[1]);
+    interpolations.push(matches[1] as string);
     str = str.replace(INTERPOLATION_PATTERN, '');
   }
   return interpolations;
@@ -20,13 +20,13 @@ export const flattenKeys = (
   result: Translation[] = [],
 ): Translation[] => {
   Object.keys(json).forEach(key => {
-    const flatKey = prefix ? `${prefix}.${key}` : key;
+    const flatKey:string = prefix ? `${prefix}.${key}` : key;
     const value = json[key];
     if (typeof value === 'object') {
-      flattenKeys(value, flatKey, result);
+      flattenKeys(value as JsonObject, flatKey as string, result);
     } else {
-      const interpolations = extractInterpolations(value);
-      result.push({ key: flatKey, value, interpolations });
+      const interpolations = extractInterpolations(value as string);
+      result.push({ key: flatKey, value:value as string, interpolations });
     }
   });
   return result;

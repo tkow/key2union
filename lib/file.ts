@@ -1,6 +1,6 @@
 import { existsSync } from 'fs';
 import * as path from 'path';
-import { CONFIG_NAME, DEFAULT_MODULE_NAME,PACKAGE_JSON } from '../constants';
+import { CONFIG_NAME, DEFINITION_FILE,PACKAGE_JSON } from '../constants';
 import { Config, JsonObject } from '../interfaces';
 import { tsTransform } from './tsTrasform';
 
@@ -13,12 +13,11 @@ export const getConfigFromPackageJson = (dir: string): Config | Error => {
   if (!config) {
     return Error(`\"${CONFIG_NAME}\" property does not exist on package.json`);
   }
-  const moduleName = config.module ? config.module :DEFAULT_MODULE_NAME
+  const dFileName = config.module ? config.module :DEFINITION_FILE
   return {
     model:  path.resolve(dir,config.model),
     module: {
-      dFileName: `${moduleName}.d.ts`,
-      name: moduleName
+      dFileName: `${dFileName}.d.ts`,
     },
     outputDir: path.resolve(dir,config.outputDir),
   };

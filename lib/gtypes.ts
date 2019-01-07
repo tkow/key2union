@@ -1,6 +1,6 @@
 import ts = require("typescript");
 
-const createParmaeters = (params:ArgumentType[]) => params.map((param,index) => ts.createParameter(
+const createParmaeters = (params:ArgumentType[]) => params.map((param) => ts.createParameter(
   /*decorators*/ undefined,
   /*modifiers*/ undefined,
   /*dotDotDotToken*/ undefined,

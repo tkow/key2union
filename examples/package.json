@@ -1,0 +1,16 @@
+{
+  "name": "tscompiler-sample-example",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "ts-node ../bin"
+  },
+  "dependencies": {
+    "commander": "^2.19.0",
+    "mkdirp": "^0.5.1",
+    "typescript": "^3.2.2"
+  },
+  "i18n-dts": {
+    "model": "./model/index.ts",
+    "outputDir": "./typings/"
+  }
+}
