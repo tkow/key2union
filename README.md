@@ -20,7 +20,7 @@ Write your package.json.
 ```
 {
   "scripts":{
-    "k2u": "ts-node ${path}/key2union/bin/index.ts"
+    "k2u": "ts-node --project ${path}/key2union/tsconfig.json ${path}/key2union/bin/index.ts"
   },...,
   "key2union": {
     "model": "./model/index.ts",
@@ -36,7 +36,7 @@ and run
   npm run k2u
 ```
 
-This is under experimental, so if you can't use npm package yet.So locate this project if you want to use this.
+This is under experimental, so you can't use npm package yet.So locate this project if you want to use this.
 
 ## model
 
