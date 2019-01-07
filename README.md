@@ -36,7 +36,7 @@ and run
   npm run k2u
 ```
 
-This is under experimental, so if you can't use npm package yet.So locate this project if you want to use this.
+This is under experimental, so you can't use npm package yet.So locate this project if you want to use this.
 
 ## model
 
