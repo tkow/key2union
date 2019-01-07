@@ -67,5 +67,5 @@ export function makeTFuncDifinition (flattenKeys:string[]) {
     ]),
     resultFile
   );
-  return [TKeys,TFunc].join('')
+  return [TKeys,TFunc].join('\n')
 }

@@ -23,10 +23,10 @@ export const flattenKeys = (
     const flatKey:string = prefix ? `${prefix}.${key}` : key;
     const value = json[key];
     if (typeof value === 'object') {
-      flattenKeys(value as JsonObject, flatKey as string, result);
+      flattenKeys(value, flatKey, result);
     } else {
-      const interpolations = extractInterpolations(value as string);
-      result.push({ key: flatKey, value:value as string, interpolations });
+      const interpolations = extractInterpolations(value);
+      result.push({ key: flatKey, value, interpolations });
     }
   });
   return result;

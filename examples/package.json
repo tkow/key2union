@@ -9,7 +9,7 @@
     "mkdirp": "^0.5.1",
     "typescript": "^3.2.2"
   },
-  "i18n-dts": {
+  "key2union": {
     "model": "./model/index.ts",
     "outputDir": "./typings/"
   }
