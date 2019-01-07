@@ -44,30 +44,35 @@ function makeFactorialFunction() {
   );
 }
 
+const createParmaeters = (paramNames,optionType?:string) => paramNames.map((str,index) => ts.createParameter(
+  /*decorators*/ undefined,
+  /*modifiers*/ undefined,
+  /*dotDotDotToken*/ undefined,
+  ts.createIdentifier(`${str}${index==1? '?':""}`),
+  undefined,
+  index===0 ? ts.createTypeReferenceNode('Tkeys',undefined):  ts.createTypeReferenceNode(optionType,undefined)
+));
+
+function createTfunc(argsNames) {
+  const TParamer = 'T'
+  const args = createParmaeters(argsNames,TParamer)
+  const funcType = ts.createFunctionTypeNode(
+    /*typeParameters*/ [ts.createTypeParameterDeclaration(TParamer)],
+    args,
+    /*type*/
+    ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
+  );
+  return ts.createTypeAliasDeclaration(undefined, undefined, "TFunc", undefined, funcType);
+}
+
 const a = ['test','test.hoge']
 
-function generateUnions() {
-    // function toPaths(dic: ObjectDictionary) : string[] {
-    //     let result: string[] = []
-    //     function extractPath(parent: string, object: ObjectDictionary) {
-    //         for (const key of  Object.keys(object)) {
-    //             let value = object[key];
-    //             if(typeof value === "string") {
-    //                 result.push(parent + key);
-    //             }else{
-    //                 extractPath(key + ".", value);
-    //             }
-    //         }
-    //     }
-    //     extractPath("", dic);
-    //     return result;
-    // }
-  let paths = a
+function generateUnions(tKeys: string[]) {
+  const paths = tKeys
       .map(ts.createStringLiteral)
       .map(ts.createLiteralTypeNode);
-  let unionType = ts.createUnionTypeNode(paths);
+  const unionType = ts.createUnionTypeNode(paths);
   return ts.createTypeAliasDeclaration(undefined, undefined, "TKeys", undefined, unionType);
-
 }
 
 const resultFile = ts.createSourceFile(
@@ -77,13 +82,22 @@ const resultFile = ts.createSourceFile(
   /*setParentNodes*/ false,
   ts.ScriptKind.TS
 );
+
 const printer = ts.createPrinter({
   newLine: ts.NewLineKind.LineFeed
 });
-const result = printer.printNode(
+
+const TKeys = printer.printNode(
   ts.EmitHint.Unspecified,
-  generateUnions(),
+  generateUnions(a),
   resultFile
 );
 
-console.log(result);
+const TFunc = printer.printNode(
+  ts.EmitHint.Unspecified,
+  createTfunc(['a','b']),
+  resultFile
+);
+
+console.log(TKeys);
+console.log(TFunc);
