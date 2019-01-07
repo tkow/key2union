@@ -1,3 +1,4 @@
 export default {
-  child: 'hoge'
+  child: 'hoge',
+  fuga: 'fuga'
 }

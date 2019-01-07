@@ -7,20 +7,9 @@
     "outDir": "build",
     "rootDir": "../",
     "typeRoots": ["../typings","../node_modules/@types"],
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": false,
-    "experimentalDecorators": false,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "declaration": true,
-    "allowJs": false,
-    "noImplicitReturns": true,
-    "noUnusedParameters": false,
-    "noUnusedLocals": false,
-    "skipLibCheck": false,
+    "allowSyntheticDefaultImports": true
   },
-  "filesGlob": ["./**/*.ts"],
+  "filesGlob": ["../**/*.ts"],
   "exclude": ["build", "node_modules", "example"],
   "compileOnSave": false
 }
