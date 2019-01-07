@@ -11,6 +11,7 @@
   },
   "key2union": {
     "model": "./model/index.ts",
-    "outputDir": "./typings/"
+    "outputDir": "./typings/",
+    "unionType": "TKeys"
   }
 }

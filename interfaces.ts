@@ -1,6 +1,7 @@
 export interface Config {
   model: string;
   outputDir: string;
+  unionTypeName: string;
   module: {
     dFileName:string;
   }

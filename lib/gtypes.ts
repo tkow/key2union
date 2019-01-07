@@ -1,4 +1,5 @@
 import ts = require("typescript");
+import { Config } from "../interfaces";
 
 const createParmaeters = (params:ArgumentType[]) => params.map((param) => ts.createParameter(
   /*decorators*/ undefined,
@@ -15,7 +16,7 @@ type ArgumentType = {
   parameterType: ts.TypeNode
 }
 
-function createTfunc(params:ArgumentType[]) {
+function createTfunc(funcTypeName:string,params:ArgumentType[]) {
   const TParamer = 'T'
   const args = createParmaeters(params)
   const funcType = ts.createFunctionTypeNode(
@@ -24,22 +25,22 @@ function createTfunc(params:ArgumentType[]) {
     /*type*/
     ts.createKeywordTypeNode(ts.SyntaxKind.StringKeyword)
   );
-  return ts.createTypeAliasDeclaration(undefined, [ts.createModifier(ts.SyntaxKind.DeclareKeyword)], "TFunc", undefined, funcType);
+  return ts.createTypeAliasDeclaration(undefined, [ts.createModifier(ts.SyntaxKind.DeclareKeyword)], funcTypeName, undefined, funcType);
 }
 
-function generateUnions(tKeys: string[]) {
+function generateUnions(unionTypeName: string,tKeys: string[]) {
   const paths = tKeys
       .map(ts.createStringLiteral)
       .map(ts.createLiteralTypeNode);
   const unionType = ts.createUnionTypeNode(paths);
-  return ts.createTypeAliasDeclaration(undefined, [ts.createModifier(ts.SyntaxKind.DeclareKeyword)], "TKeys", undefined, unionType);
+  return ts.createTypeAliasDeclaration(undefined, [ts.createModifier(ts.SyntaxKind.DeclareKeyword)], unionTypeName, undefined, unionType);
 }
 
 const printer = ts.createPrinter({
   newLine: ts.NewLineKind.LineFeed
 });
 
-export function makeTFuncDifinition (flattenKeys:string[]) {
+export function makeTFuncDifinition (flattenKeys:string[],config:Config) {
   const resultFile = ts.createSourceFile(
     "eval.ts",
     "",
@@ -50,16 +51,16 @@ export function makeTFuncDifinition (flattenKeys:string[]) {
 
   const TKeys = printer.printNode(
     ts.EmitHint.Unspecified,
-    generateUnions(flattenKeys),
+    generateUnions(config.unionTypeName,flattenKeys),
     resultFile
   );
 
   const TFunc = printer.printNode(
     ts.EmitHint.Unspecified,
-    createTfunc([
+    createTfunc(`${config.unionTypeName}Func`,[
       {
-        identifier:'tKeys',
-        parameterType:ts.createTypeReferenceNode('TKeys',undefined)
+        identifier:'keys',
+        parameterType:ts.createTypeReferenceNode(config.unionTypeName,undefined)
       },
       {
         identifier:'option?',

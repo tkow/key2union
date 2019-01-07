@@ -13,7 +13,7 @@ export const generate = (
     mkdirp.sync(config.outputDir);
   }
   const keys = flattenKeys(translations);
-  const data = dts(keys);
+  const data = dts(keys,config);
   const outputPath = path.resolve(config.outputDir, config.module.dFileName);
   return execWriteFile(outputPath, data);
 };

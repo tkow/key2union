@@ -1,7 +1,7 @@
 import {makeTFuncDifinition} from './gtypes';
-import { Translation } from '../interfaces';
+import { Translation, Config } from '../interfaces';
 
-export const dts = (keys: Translation[]): string => {
+export const dts = (keys: Translation[],config?:Config): string => {
   const tKeys = keys.map(value=> value.key)
-  return makeTFuncDifinition(tKeys);
+  return makeTFuncDifinition(tKeys,config);
 };
