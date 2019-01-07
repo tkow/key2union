@@ -67,7 +67,7 @@ export function makeTFuncDifinition (flattenKeys:string[],config:Config) {
         parameterType: ts.createTypeReferenceNode('T',undefined)
       },
       {
-        identifier:'args?',
+        identifier:'args',
         parameterType: ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword),
         variableArgs:true
       },
