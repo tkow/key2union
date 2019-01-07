@@ -3,7 +3,7 @@ import ts = require("typescript");
 const createParmaeters = (params:ArgumentType[]) => params.map((param) => ts.createParameter(
   /*decorators*/ undefined,
   /*modifiers*/ undefined,
-  /*dotDotDotToken*/ undefined,
+  /*dotDotDotToken*/ param.variableArgs ? ts.createToken(ts.SyntaxKind.DotDotDotToken): undefined,
   ts.createIdentifier(param.identifier),
   undefined,
   param.parameterType
@@ -11,6 +11,7 @@ const createParmaeters = (params:ArgumentType[]) => params.map((param) => ts.cre
 
 type ArgumentType = {
   identifier: string
+  variableArgs?: boolean
   parameterType: ts.TypeNode
 }
 
@@ -57,12 +58,17 @@ export function makeTFuncDifinition (flattenKeys:string[]) {
     ts.EmitHint.Unspecified,
     createTfunc([
       {
-        identifier:'Tkeys',
-        parameterType:ts.createTypeReferenceNode('Tkeys',undefined)
+        identifier:'tKeys',
+        parameterType:ts.createTypeReferenceNode('TKeys',undefined)
       },
       {
-        identifier:'option',
+        identifier:'option?',
         parameterType: ts.createTypeReferenceNode('T',undefined)
+      },
+      {
+        identifier:'args?',
+        variableArgs:true,
+        parameterType: ts.createKeywordTypeNode(ts.SyntaxKind.AnyKeyword)
       },
     ]),
     resultFile
