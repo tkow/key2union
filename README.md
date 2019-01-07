@@ -20,7 +20,7 @@ Write your package.json.
 ```
 {
   "scripts":{
-    "k2u": "ts-node ${path}/key2union/bin/index.ts"
+    "k2u": "ts-node --project ${path}/key2union/tsconfig.json ${path}/key2union/bin/index.ts"
   },...,
   "key2union": {
     "model": "./model/index.ts",
