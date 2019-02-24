@@ -77,6 +77,10 @@ ex)
 ```
 output is ./typeings/hoge.d.ts.
 
+## future work
+
+configurations for array setting.
+
 ## License
 
 MIT
