@@ -80,6 +80,8 @@ output is ./typeings/hoge.d.ts.
 ## future work
 
 configurations for array setting.
+we plan above data can set.
+
 
 ## License
 
