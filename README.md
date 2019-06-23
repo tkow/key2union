@@ -1,6 +1,6 @@
 # About
 
-Your js or ts or json object's keys to one uniton type.
+Your js or ts or json object's keys to one uniton type. It is usefull for literal type auto generate.
 
 # Example
 
