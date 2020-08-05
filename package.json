@@ -6,6 +6,7 @@
     "build": "tsc",
     "start": "ts-node gtypes.ts"
   },
+  "files": ["build"],
   "bin": {
     "k2u": "./build/index.js"
   },
@@ -14,8 +15,8 @@
     "url": "git+https://github.com/tkow/key2union.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "tkow",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/tkow/key2union/issues"
   },

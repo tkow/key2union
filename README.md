@@ -9,6 +9,7 @@ visit https://github.com/tkow/key2union/tree/master/examples
 ```sh
 $ git clone git@github.com:tkow/key2union.git
 $ npm i
+$ npm run build
 $ cd key2union/examples
 $ npm start
 ```
@@ -19,9 +20,7 @@ Write your package.json.
 
 ```
 {
-  "scripts":{
-    "k2u": "ts-node --project ${path}/key2union/tsconfig.json ${path}/key2union/bin/index.ts"
-  },...,
+  ...,
   "key2union": {
     "model": "./model/index.ts",
     "outputDir": "./typings/",
@@ -36,7 +35,7 @@ and run
   npm run k2u
 ```
 
-This is under experimental, so you can't use npm package yet.So locate this project if you want to use this.
+This is under experimental, so care  if you want to use this.
 
 ## model
 
