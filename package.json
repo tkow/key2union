@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "scripts": {
     "build": "tsc",
+    "prepare": "npm run build",
     "start": "ts-node gtypes.ts"
   },
   "files": [
