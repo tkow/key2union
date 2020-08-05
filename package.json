@@ -1,11 +1,13 @@
 {
   "name": "key2union",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "tsc",
     "start": "ts-node gtypes.ts"
   },
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "main": "./build/bin/index.js",
   "bin": {
     "k2u": "./build/bin/index.js"
@@ -14,7 +16,9 @@
     "type": "git",
     "url": "git+https://github.com/tkow/key2union.git"
   },
-  "keywords": ["typescript"],
+  "keywords": [
+    "typescript"
+  ],
   "author": "tkow",
   "license": "MIT",
   "bugs": {
