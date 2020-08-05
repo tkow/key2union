@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import program = require('commander');
-import path = require('path');
+import * as program from 'commander';
+import * as path from 'path';
 import { Config, JsonObject } from '../interfaces';
-import { getConfigFromPackageJson, getTranslationFromModel } from '../lib/file';
-import { generate } from '../lib/generate';
-import { watch } from '../lib/watch';
+import { getConfigFromPackageJson, getTranslationFromModel } from '../file';
+import { generate } from '../generate';
+import { watch } from '../watch';
 
 program.option('-w, --watch', 'watch file change').parse(process.argv);
 

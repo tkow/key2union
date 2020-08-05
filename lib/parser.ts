@@ -1,5 +1,5 @@
-import { INTERPOLATION_PATTERN } from '../constants';
-import { JsonObject, Translation } from '../interfaces';
+import { INTERPOLATION_PATTERN } from './constants';
+import { JsonObject, Translation } from './interfaces';
 
 export const extractInterpolations = (str: string): string[] => {
   const interpolations:string[] = [];

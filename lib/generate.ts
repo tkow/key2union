@@ -1,7 +1,7 @@
 import { existsSync, PathLike, writeFile } from 'fs';
 import mkdirp = require('mkdirp');
 import * as path from 'path';
-import { Config, JsonObject } from '../interfaces';
+import { Config, JsonObject } from './interfaces';
 import { dts } from './ast';
 import { flattenKeys } from './parser';
 

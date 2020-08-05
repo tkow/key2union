@@ -1,7 +1,7 @@
 import { existsSync } from 'fs';
 import * as path from 'path';
-import { CONFIG_NAME, DEFINITION_FILE,PACKAGE_JSON, UNIONTYPE_NAME } from '../constants';
-import { Config, JsonObject } from '../interfaces';
+import { CONFIG_NAME, DEFINITION_FILE,PACKAGE_JSON, UNIONTYPE_NAME } from './constants';
+import { Config, JsonObject } from './interfaces';
 import { tsTransform } from './tsTrasform';
 
 export const getConfigFromPackageJson = (dir: string): Config | Error => {

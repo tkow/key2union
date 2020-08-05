@@ -1,4 +1,4 @@
-import { Config, Translation } from '../interfaces';
+import { Config, Translation } from './interfaces';
 import {makeTFuncDifinition} from './gtypes';
 
 export const dts = (keys: Translation[],config:Config): string => {

@@ -2,7 +2,7 @@
   "name": "key2union-example",
   "version": "1.0.0",
   "scripts": {
-    "start": "ts-node ../bin"
+    "start": "node ../build/bin/index.js"
   },
   "dependencies": {
     "commander": "^2.19.0",

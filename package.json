@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "start": "ts-node gtypes.ts"
+  },
+  "bin": {
+    "k2u": "./build/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +35,6 @@
   "dependencies": {
     "commander": "^2.19.0",
     "mkdirp": "^0.5.1",
-    "typescript": "^3.2.2"
+    "typescript": "^3.9.7"
   }
 }

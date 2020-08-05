@@ -1,6 +1,6 @@
 import { watch as watchDir } from 'fs';
 import * as path from 'path';
-import { Config, JsonObject } from '../interfaces';
+import { Config, JsonObject } from './interfaces';
 import { getTranslationFromModel } from './file';
 import { generate } from './generate';
 

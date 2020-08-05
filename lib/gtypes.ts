@@ -1,5 +1,5 @@
 import ts = require("typescript");
-import { Config } from "../interfaces";
+import { Config } from "./interfaces";
 
 const createParmaeters = (params:ArgumentType[]) => params.map((param) => ts.createParameter(
   /*decorators*/ undefined,
