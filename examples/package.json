@@ -5,12 +5,12 @@
     "start": "node ../build/bin/index.js"
   },
   "dependencies": {
-    "commander": "^2.19.0",
-    "mkdirp": "^0.5.1",
-    "typescript": "^3.2.2"
+    "commander": "link:../node_moddules/commander",
+    "mkdirp": "link:../node_moddules/mkdirp",
+    "typescript": "link:../node_moddules/typescript"
   },
   "key2union": {
-    "model": "./model/index.ts",
+    "model": ["./model/index.ts","./pages/index.ts"],
     "outputDir": "./typings/",
     "unionType": "TKeys"
   }

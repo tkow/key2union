@@ -14,8 +14,9 @@ export const getConfigFromPackageJson = (dir: string): Config | Error => {
     return Error(`\"${CONFIG_NAME}\" property does not exist on package.json`);
   }
   const dFileName = config.module || DEFINITION_FILE
+  const model =  Array.isArray(config.model) ? config.model.map(_model => path.resolve(dir, _model)) : [path.resolve(dir,config.model)]
   return {
-    model:  path.resolve(dir,config.model),
+    model,
     unionTypeName: config.unionType || UNIONTYPE_NAME,
     module: {
       dFileName: `${dFileName}.d.ts`,
@@ -40,7 +41,7 @@ export const getTranslationFromModel = (
   filePath: string,
 ): JsonObject | Error => {
   if (!existsSync(filePath)) {
-    return Error('model file does not exist');
+    return Error(`model file ${filePath} does not exist`);
   }
   const extname = path.extname(filePath);
   if (isTypescript(extname)) { return tsTransform(filePath.replace(/\.ts/,'')) }

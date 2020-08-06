@@ -1,5 +1,5 @@
 export interface Config {
-  model: string;
+  model: string[];
   outputDir: string;
   unionTypeName: string;
   module: {

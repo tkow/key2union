@@ -41,6 +41,7 @@ This is under experimental, so care  if you want to use this.
 
 Specify json path, or ts or js object path.
 These export must be default export.
+This parameter can be array.
 
 ## outputDir
 

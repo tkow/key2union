@@ -1,2 +1,2 @@
 import { Config } from './interfaces';
-export declare const watch: (filePath: string, config: Config) => void;
+export declare const watch: (config: Config) => void;
