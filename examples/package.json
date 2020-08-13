@@ -10,8 +10,9 @@
     "typescript": "link:../node_moddules/typescript"
   },
   "key2union": {
-    "model": ["./model/index.ts","./pages/index.ts"],
+    "model": ["./model","./pages","./jsontest/jsontest.json","./jstest"],
     "outputDir": "./typings/",
+    "emitModelKey": true,
     "unionType": "TKeys"
   }
 }

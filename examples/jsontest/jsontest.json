@@ -1,0 +1,6 @@
+{
+  "jsontest": {
+    "child": "true",
+    "brother": "mike"
+  }
+}

@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeTFuncDifinition = void 0;
 const ts = require("typescript");
+const path = require("path");
 const createParmaeters = (params) => params.map((param) => ts.createParameter(
 /*decorators*/ undefined, 
 /*modifiers*/ undefined, 
@@ -44,7 +45,13 @@ function makeTFuncDifinition(flattenKeys, config) {
             variableArgs: true
         },
     ]), resultFile);
-    return [TKeys, TFunc].join('\n');
+    const TModelNames = [];
+    if (config.emitModelKey) {
+        const inputModels = config.model.map((filePath) => path.basename(filePath, path.extname(filePath)));
+        const result = printer.printNode(ts.EmitHint.Unspecified, generateUnions(`${config.unionTypeName}Models`, inputModels), resultFile);
+        TModelNames.push(result);
+    }
+    return [TKeys, TFunc].concat(TModelNames).join('\n');
 }
 exports.makeTFuncDifinition = makeTFuncDifinition;
 //# sourceMappingURL=gtypes.js.map

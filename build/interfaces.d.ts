@@ -1,5 +1,6 @@
 export interface Config {
     model: string[];
+    emitModelKey?: boolean;
     outputDir: string;
     unionTypeName: string;
     module: {

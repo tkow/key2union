@@ -1,4 +1,5 @@
 import ts = require("typescript");
+import * as path from "path";
 import { Config } from "./interfaces";
 
 const createParmaeters = (params:ArgumentType[]) => params.map((param) => ts.createParameter(
@@ -74,5 +75,18 @@ export function makeTFuncDifinition (flattenKeys:string[],config:Config) {
     ]),
     resultFile
   );
-  return [TKeys,TFunc].join('\n')
+
+  const TModelNames: string[] = []
+  if(config.emitModelKey) {
+    const inputModels = config.model.map((filePath) => path.basename(filePath, path.extname( filePath )))
+    const result = printer.printNode(
+      ts.EmitHint.Unspecified,
+      generateUnions(`${config.unionTypeName}Models`, inputModels),
+      resultFile
+    )
+    TModelNames.push(result)
+  }
+
+
+  return [TKeys,TFunc].concat(TModelNames).join('\n')
 }

@@ -14,10 +14,12 @@ export const getConfigFromPackageJson = (dir: string): Config | Error => {
     return Error(`\"${CONFIG_NAME}\" property does not exist on package.json`);
   }
   const dFileName = config.module || DEFINITION_FILE
+  const emitModelKey: boolean = !!config.emitModelKey
   const model =  Array.isArray(config.model) ? config.model.map(_model => path.resolve(dir, _model)) : [path.resolve(dir,config.model)]
   return {
     model,
     unionTypeName: config.unionType || UNIONTYPE_NAME,
+    emitModelKey,
     module: {
       dFileName: `${dFileName}.d.ts`,
     },
@@ -37,16 +39,36 @@ export const isJavascript = (extname: string): boolean => {
   return extname.endsWith('.js');
 };
 
+const modulePath = (filePath: string) => {
+
+  const moduleResolveRule = `${filePath}/index`
+  const extensions = ['.ts', '.js','.json']
+  for(let i = 0, len = extensions.length; i < len; i++) {
+    const ext = extensions[i]
+    const _modulePath = `${moduleResolveRule}${ext}`
+    if(existsSync(_modulePath)){
+      return [_modulePath, ext]
+    }
+  }
+  throw Error('module entry file extension type should be either .json or .ts|.js');
+}
+
 export const getTranslationFromModel = (
   filePath: string,
 ): JsonObject | Error => {
-  if (!existsSync(filePath)) {
-    return Error(`model file ${filePath} does not exist`);
+  let pathName = filePath
+  let extname = path.extname(filePath);
+  if(!extname) {
+    try {
+      [pathName, extname] = modulePath(pathName)
+    } catch(e) {
+      return e as Error
+    }
   }
-  const extname = path.extname(filePath);
-  if (isTypescript(extname)) { return tsTransform(filePath.replace(/\.ts/,'')) }
+  console.log(pathName)
+  if (isTypescript(extname)) { return tsTransform(pathName.replace(/\.ts/,'')) }
   if (isJson(extname) || isJavascript(extname)) {
-    return require(filePath) as JsonObject;
+    return require(pathName) as JsonObject;
   }
-  return Error('file extension type should be either .json or .ts|.js');
+  return Error('module entry file extension type should be either .json or .ts|.js');
 };
