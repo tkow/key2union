@@ -77,10 +77,13 @@ ex)
 ```
 output is ./typeings/hoge.d.ts.
 
-## future work
+## emitModelKey (optional)
 
-configurations for array setting.
-we plan above data can set.
+emit module name type name base unionType key and dir/file name
+
+This features for [react-i18next namespaces](https://react.i18next.com/legacy-v9/withnamespaces#withnamespaces-options)
+
+
 
 
 ## License
