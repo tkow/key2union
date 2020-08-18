@@ -4,7 +4,8 @@ exports.watch = void 0;
 const fs_1 = require("fs");
 const main_1 = require("./main");
 exports.watch = (config) => {
-    config.model.forEach((dir) => {
+    const watchDirs = config.watchDirs || config.model;
+    watchDirs.forEach((dir) => {
         console.info(`Start watching: ${dir}`);
         fs_1.watch(dir, { persistent: true, recursive: true }, (eventType, fileName) => {
             console.info(`Detect ${fileName} ${eventType}`);

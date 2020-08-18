@@ -3,6 +3,7 @@ export interface Config {
     emitModelKey?: boolean;
     outputDir: string;
     unionTypeName: string;
+    watchDirs?: string[];
     module: {
         dFileName: string;
     };

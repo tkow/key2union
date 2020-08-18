@@ -4,7 +4,9 @@ import main from './main';
 
 export const watch = (config: Config) => {
 
-  config.model.forEach((dir) => {
+  const watchDirs = config.watchDirs || config.model
+
+  watchDirs.forEach((dir) => {
     console.info(`Start watching: ${dir}`);
     watchDir(dir,{persistent:true,recursive:true}, (eventType,fileName) => {
 
