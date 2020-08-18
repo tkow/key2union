@@ -21,6 +21,7 @@ exports.getConfigFromPackageJson = (dir) => {
         model,
         unionTypeName: config.unionType || constants_1.UNIONTYPE_NAME,
         emitModelKey,
+        watchDirs: config.watchDirs,
         module: {
             dFileName: `${dFileName}.d.ts`,
         },

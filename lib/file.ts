@@ -20,6 +20,7 @@ export const getConfigFromPackageJson = (dir: string): Config | Error => {
     model,
     unionTypeName: config.unionType || UNIONTYPE_NAME,
     emitModelKey,
+    watchDirs: config.watchDirs,
     module: {
       dFileName: `${dFileName}.d.ts`,
     },
